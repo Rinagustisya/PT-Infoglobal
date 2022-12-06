@@ -24,6 +24,7 @@ while ($a= mysqli_fetch_array($query) ) {
     <div class="row">
         <div class="col">
     <h3>Tambah Data </h3>
+		<marquee bgcolor="cyan" width="500" height="40">Selamat Datang Di Halaman Tampilan</marquee>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 	<a href="tambah.php"><buttonTambah type="button" class="btn btn-secondary">Tambah data</button></a>
 	<a href="logout.php"><buttonTambah type="button" class="btn btn-outline-primary">Logout</button></a>
@@ -58,6 +59,9 @@ while ($a= mysqli_fetch_array($query) ) {
 </div>
 </div>
 </div>
+	
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,96L21.8,122.7C43.6,149,87,203,131,218.7C174.5,235,218,213,262,186.7C305.5,160,349,128,393,117.3C436.4,107,480,117,524,133.3C567.3,149,611,171,655,165.3C698.2,160,742,128,785,117.3C829.1,107,873,117,916,133.3C960,149,1004,171,1047,186.7C1090.9,203,1135,213,1178,229.3C1221.8,245,1265,267,1309,261.3C1352.7,256,1396,224,1418,208L1440,192L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
