@@ -28,13 +28,12 @@ function cari($keyword) {
 
 function tambah($data) {
 	global $koneksi;
-$id = htmlspecialchars($data ["id"]);
 $nama_doc = htmlspecialchars ($data["nama_doc"]);
 $tipe_doc = htmlspecialchars($data["tipe_doc"]);
 
 $query = "INSERT INTO dokumen
 		VALUES 
-		('$id', '$nam_doc', '$tipe_doc')
+		('','$nama_doc', '$tipe_doc')
 		";
 	mysqli_query ($koneksi, $query);
 
@@ -44,61 +43,46 @@ return mysqli_affected_rows ($koneksi);
 
 function upload() {
 
-	$namaFile = $_FILES['tipe_doc']['nama_doc'];
-	$ukuranFile = $_FILES['tipe_doc']['size'];
-	$error = $_FILES['tipe_doc']['error'];
-	$tmpName = $_FILES['tipe_doc']['tmp_name'];
+	$ekstensi_diperbolehkan    = array('pdf','docx','doc','ppt','pptx','xls','txt');
+        $nama    = $_FILES['tipe_doc']['nama_doc'];
+        $x        = explode('.', $nama);
+        $ekstensi    = strtolower(end($x));
+        $ukuran        = $_FILES['tipe_doc']['size'];
+        $file_tmp    = $_FILES['tipe_doc']['tmp_name']; 
+     
+        if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+            if($ukuran < 1044070){ 
+                move_uploaded_file($file_tmp, 'aset/'.$nama);
+                $query    = mysql_query("INSERT INTO dokumen VALUES(NULL,'$nama')");
+                if($query){
+                    echo 'FILE BERHASIL DI UPLOAD!';
+                }
+                else{
+                    echo 'FILE GAGAL DI UPLOAD!';
+                }
+            }
+            else{
+                echo 'UKURAN FILE TERLALU BESAR!';
+            }
+        }
+        else{
+            echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN!';
+        }
+    }
 
-	// cek apakah tidak ada doc yang diupload
-	if ($error === 4) {
-		echo "<script>
-				alert('pilih dokumen terlebih dahulu')
-				</script>";
-		return false;
-	}
-
-	// cek apakah yang diupload adalah gambar
-	$ekstensiFileValid= ['doc', 'pdf', 'txt','docx'];
-	$ekstensiFile = explode('.', $namaFile);
-	$ekstensiFile = strtolower(end($ekstensiFile));
-	if (!in_array($ekstensiFile, $ekstensiFileValid)) {
-		echo "<script>
-				alert('yang anda upload bukan dokumen')
-			</script>";
-		return false;
-	}
-
-	// cek jika ukurannya terlalu besar
-	if ($ukuranFile > 10000000) {
-		echo "<script>
-				alert('ukuran dokumen terlalu besar')
-				</script>";
-		return false;
-	}
-
-	// lolos pengecekan file siap diupload
-	// generate nama file baru
-	$namaFileBaru = uniqid();
-	$namaFileBaru .= '.';
-	$namaFileBaru .= $ekstensiFile;
-	move_uploaded_file($tmpName, 'asset/doc . $namaFileBaru');
-
-	return $namaFileBaru;
-}
 
 function ubah($data) {
     global $koneksi;
-	$id	    = $_POST['id'];
-	$nama_doc = $_POST['nama_doc'];
-	$tipe_doc		    = $_POST['tipe_doc'];
-    
-	$query = "UPDATE dokumen SET
-	(id='$id', nama_doc='$nama_doc', tipe_doc='$tipe_doc' WHERE id ='$id')";
-	mysqli_query ($koneksi, $query);
-    
-    
-    return mysqli_affected_rows ($koneksi);
-    
+	$id = $data["id"];
+	$nama_doc = $data["nama_doc"];
+	$tipe_doc = $data["tipe_doc"];
+	
+	// query insert data 
+	// sebelum where gausah koma, enakan dibikin satu baris biar keliatan
+	$query = "UPDATE dokumen SET nama_doc = '$nama_doc', tipe_doc = '$tipe_doc' WHERE id = $id ";
+	mysqli_query($conn, $query);
+
+	return mysqli_affected_rows($conn);
     }
     
 	function registrasi($data) {

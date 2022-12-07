@@ -25,7 +25,7 @@ while ($a= mysqli_fetch_array($query) ) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,128L48,112C96,96,192,64,288,80C384,96,480,160,576,181.3C672,203,768,181,864,160C960,139,1056,117,1152,133.3C1248,149,1344,203,1392,229.3L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
 	<!-- cek pesan notifikasi -->
 	<?php 
 	if(isset($_GET['pesan'])){
@@ -67,7 +67,7 @@ while ($a= mysqli_fetch_array($query) ) {
 	<td><?= $row["nama_doc"]?></td>
 	<td><?= $row["tipe_doc"]?></td>
     <td>
-		<a href="ubah.php?id=<?= $row["id"]?>">Ubah</a>
+		<a href="ubah.php?id=<?= $row["id"]?>">Ubah</a> |
 		<a href="hapus.php?id= <?= $row["id"]?>" onclick="return confirm ('yakin?');">Hapus</a>
 
 </td>

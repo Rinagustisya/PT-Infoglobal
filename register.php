@@ -10,7 +10,7 @@ if ( isset($_POST["register"])) {
 	} else {
 		echo mysqli_error($koneksi);
 	}
-    header("location:login.php");
+    header("location:index.php");
 }
 ?>
 

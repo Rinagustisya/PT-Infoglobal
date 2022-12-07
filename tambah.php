@@ -34,30 +34,35 @@ if (isset($_POST ["submit"]) ) {
     <title>Tambah Data</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
+<div class="bg-success p-2 text-white bg-opacity-75">
 <body>
-    <h2>Tambah Data</h2>
+
+<div class="vh-100 d-flex justify-content-center align-items-center">
+<div class="col-md-4 p-5 shadow-lg border rounded-5 border-dark">
+    <h2 align="center">Tambah Data</h2>
     <div class="tambah">
-    <div class="mb-3">
+
+
     <form action="" method="post" enctype="multipart/form-data">
-        <ul>
-            <li>
-                <label for="id">ID dokumen: </label>
-                <input type="text" name="id" id="id" required>
-            </li>
-            <li>
-                <label for="nama_doc">Nama : </label>
-                <input type="text" name="nama_doc" id="nama_doc" required>
-            </li>
-            <li>
-                <label for="tipe_doc">Tipe Dokumen : </label>
-                <input type="file" name="tipe_doc" id="tipe_doc" required>
-            </li>
-            <li>
-                <button type="submit" name="submit" value="upload"> Tambah Data!</button>
-            </li>
-</ul>
+    <input type="hidden" name="id" id="id" required>
+    <div class="mb-3">
+                <label for="nama_doc" class="form-label">Nama : </label>
+                <input class="form-control border border-success" type="text" name="nama_doc" id="nama_doc" required>
+    </div>
+    <div class="mb-3">
+                <label for="tipe_doc" class="form-label">Tipe Dokumen : </label>
+                <input class="form-control form-control-sm" type="file" name="tipe_doc" id="tipe_doc" required>
+                
+</div>
+<div class="d-grid">
+                <button type="submit" name="submit" value="upload" class="btn btn-success"> Tambah Data!</button>
+</div>
+
 </form>
+</div>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+</div>
 </html>
