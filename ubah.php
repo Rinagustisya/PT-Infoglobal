@@ -4,7 +4,7 @@ require 'koneksi.php';
 // ambil data di url
 $id = $_GET["id"];
 
-$dok = query("SELECT * FROM dokumen WHERE id = $id")[0];
+$dok = query("SELECT * FROM dokumen WHERE id = $id");
 
 if (isset($_POST ["submit"]) ) {
 // CEK APAKAH DATA BERHASIL DI UBAH ATAU TIDAK
@@ -42,14 +42,15 @@ if (isset($_POST ["submit"]) ) {
     <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
     <input type="hidden" name="id" value="<?= $dok['id']; ?>">
+    <input type="hidden" name="file_doc" value="<?= $dok['tipe_doc']; ?>">
     <h3 align="center">Ubah Data</h3>
             <div class="mb-3">
                 <label for="nama_doc" class="form-label">Nama Dokumen : </label>
-                <input class="form-control border border-primary" type="text" name="nama_doc" id="nama_doc" required value="<?= $dok['id']; ?>">
+                <input class="form-control border border-primary" type="text" name="nama_doc" id="nama_doc" required value="<?= $dok['nama_doc']; ?>">
             </div>
             <div class="mb-3">
                 <label for="tipe_doc" class="form-label">Tipe Dokumen : </label>
-                <input class="form-control form-control-sm" type="file" name="tipe_doc" id="tipe_doc" required value="<?= $dok['id']; ?>">
+                <input class="form-control form-control-sm" type="file" name="tipe_doc" id="tipe_doc" required value="<?= $dok['tipe_doc']; ?>">
                 <input type="hidden" name="hidden">
 
             </div>

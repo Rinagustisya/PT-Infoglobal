@@ -11,25 +11,12 @@
 
 <body>
 
-  <?php
-  if (isset($_GET['pesan'])) {
-    if ($_GET['pesan'] == "gagal") {
-      echo "Login gagal! username dan password salah!";
-    } else if ($_GET['pesan'] == "logout") {
-      echo "Anda telah berhasil logout";
-    } else if ($_GET['pesan'] == "belum_login") {
-      echo "Anda harus login untuk mengakses halaman admin";
-    }
-  }
-  ?>
-  <br />
-  <br />
-
   
-<H3 align="center">Silahkan Login Terlebih dahulu</H3>
-<div class=" d-flex justify-content-center align-items-center">
+
+<div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="col-md-4 p-5 shadow-sm border rounded-3 border-primary">
-  <form method="post" action="cek_login.php">
+    <H3>Silahkan Login Terlebih dahulu</H3>
+  <form method="" action="cek_login.php">
     <div class="mb-3">
       <label for="username" class="form-label">Username</label>
       <input type="text" class="form-control border border-primary" id="username">

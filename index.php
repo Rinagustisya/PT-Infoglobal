@@ -22,6 +22,10 @@ while ($a= mysqli_fetch_array($query) ) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Data</title>
+	 <!-- My CSS -->
+	 <link rel="stylesheet" href="style.css" />
+	
+	 <!-- bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
@@ -36,22 +40,40 @@ while ($a= mysqli_fetch_array($query) ) {
 		}
 	}
 	?>
-	<!-- Akhir Navbar -->
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow p-3 fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Halaman Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</nav>
+	<!-- akhir navbar -->
 <div class="container">
     <div class="row">
         <div class="col">
-    <h3 align="center">Tabel Data Dokumen </h3>
+	
+		<section class="jumbotron text-center">
+    	<h3>Tabel Data Dokumen </h3>
+		</section>
 	<marquee direction="right">Selamat Datang Di Halaman Tampilan</marquee>
 
 	
 
 	<div class="d-grid gap-3 d-md-flex justify-content-md-end">
-	<a href="tambah.php"><buttonTambah type="button" class="btn btn-primary">Tambah data</button></a>
-	<a href="logout.php"><buttonTambah type="button" class="btn btn-outline-primary">Logout</button></a>
+	<a href="tambah.php"><buttonTambah type="button" class="btn btn-success">Tambah data</button></a>
 	</div>
 	<br><br>
 
-<table class="table table-bordered border-primary">
+	<table class="table table-success table-striped-columns">
 	<tr>
 		<th>No.</th>
 		<th>Id</th>
@@ -80,7 +102,10 @@ while ($a= mysqli_fetch_array($query) ) {
 </div>
 </div>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,96L21.8,122.7C43.6,149,87,203,131,218.7C174.5,235,218,213,262,186.7C305.5,160,349,128,393,117.3C436.4,107,480,117,524,133.3C567.3,149,611,171,655,165.3C698.2,160,742,128,785,117.3C829.1,107,873,117,916,133.3C960,149,1004,171,1047,186.7C1090.9,203,1135,213,1178,229.3C1221.8,245,1265,267,1309,261.3C1352.7,256,1396,224,1418,208L1440,192L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
+<div class="d-grid gap-3 d-md-flex justify-content-md-center">
+<a href="logout.php"><buttonTambah type="button" class="btn btn-outline-primary">Logout</button></a>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,32L40,37.3C80,43,160,53,240,58.7C320,64,400,64,480,85.3C560,107,640,149,720,181.3C800,213,880,235,960,250.7C1040,267,1120,277,1200,261.3C1280,245,1360,203,1400,181.3L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

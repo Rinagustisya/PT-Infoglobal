@@ -55,7 +55,7 @@ if (isset($_POST ["submit"]) ) {
                 
 </div>
 <div class="d-grid">
-                <button type="submit" name="submit" value="upload" class="btn btn-success"> Tambah Data!</button>
+                <button type="submit" name="submit" class="btn btn-success"> Tambah Data!</button>
 </div>
 
 </form>
