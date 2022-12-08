@@ -30,7 +30,7 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <div class="d-grid">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" onclick="return confirm ('Apakah Username dan Password sudah benar?');">Login</button>
 </div>
     <p class="mb-0  text-center">Don't have an account? 
       <a href="register.php"class="text-primary fw-bold">Sign Up</a></p>

@@ -2,6 +2,7 @@
 $koneksi = mysqli_connect("localhost" ,"root", "","crud");
 
 $data = mysqli_query($koneksi, "SELECT*FROM dokumen");
+
 function hapus($id) {
     global $koneksi;
     mysqli_query($koneksi, "DELETE FROM dokumen WHERE id = $id");
@@ -20,26 +21,26 @@ function cari($keyword) {
 	$query = "SELECT * FROM dokumen
 			WHERE
 		id LIKE '%$keyword%' OR
-		nama_doc LIKE '%$keyword%' OR
-		tipe_doc LIKE '%$keyword%'
+		nama LIKE '%$keyword%' OR
+		berkas LIKE '%$keyword%'
 	";
 	return query($query);
 }
 
 function tambah($data) {
 	global $koneksi;
-$nama_doc = htmlspecialchars ($data["nama_doc"]);
-$tipe_doc = htmlspecialchars($_FILES["tipe_doc"]['nama_doc']);
+$nama = htmlspecialchars ($data['nama']);
+$berkas = htmlspecialchars($_FILES['berkas']['nama']);
 
 // upload file
-$tipe_doc = upload();
-if (!$tipe_doc) {
+$berkas = upload();
+if (!$berkas) {
 	return false;
 }
 
 $query = "INSERT INTO dokumen
 		VALUES 
-		('','$nama_doc', '$tipe_doc')
+		('','$nama', '$berkas')
 		";
 	mysqli_query ($koneksi, $query);
 
@@ -49,10 +50,10 @@ return mysqli_affected_rows ($koneksi);
 
 function upload() {
 
-	$namaFile = $_FILES['tipe_doc']['nama_doc'];
-	$ukuranFile = $_FILES['tipe_doc']['nama_doc'];
-	$error = $_FILES['tipe_doc']['error'];
-	$tmpName = $_FILES['tipe_doc']['tmp_name'];
+	$namaFile = $_FILES['berkas']['nama'];
+	$ukuranFile = $_FILES['berkas']['nama'];
+	$error = $_FILES['berkas']['error'];
+	$tmpName = $_FILES['berkas']['tmp_name'];
 
 	// cek apakah tidak ada doc yang diupload
 	if ($error === 4) {
@@ -63,7 +64,7 @@ function upload() {
 	}
 
 	// cek apakah yang diupload adalah gambar
-	$ekstensiFileValid= ['docx', 'pdf', 'txt'];
+	$ekstensiFileValid= ['docx', 'pdf', 'txt', 'pptx', 'ppt'];
 	$ekstensiFile = explode('.', $namaFile);
 	$ekstensiFile = strtolower(end($ekstensiFile));
 	if (!in_array($ekstensiFile, $ekstensiFileValid)) {
@@ -88,20 +89,22 @@ function upload() {
 	$namaFileBaru .= $ekstensiFile;
 	// file udah berhasil keupload tapi namanya ngaco, di kodingan php dasarmu errornya juga gini
 	// gara gara kurang slash sama folder doc harus dibuat dulu di dalem asset
-	move_uploaded_file($tmpName, 'assets/doc/' . $namaFileBaru);
+	move_uploaded_file($tmpName, 'asset/doc/' . $namaFileBaru);
 
 	return $namaFileBaru;
 }
 
 function ubah($data) {
     global $koneksi;
-	$id = $data["id"];
-	$nama_doc = $data["nama_doc"];
-	$tipe_doc = $data["tipe_doc"];
+	$id = $data['id'];
+	$nama = $data['nama'];
+	$berkas = $data['berkas'];
 	
+
+
 	// query insert data 
 	// sebelum where gausah koma, enakan dibikin satu baris biar keliatan
-	$query = "UPDATE dokumen SET nama_doc = '$nama_doc', tipe_doc = '$tipe_doc' WHERE id = $id ";
+	$query = "UPDATE dokumen SET nama = '$nama', berkas = '$berkas' WHERE id = $id ";
 	mysqli_query($koneksi, $query);
 
 	return mysqli_affected_rows($koneksi);

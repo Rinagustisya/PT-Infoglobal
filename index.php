@@ -76,21 +76,23 @@ while ($a= mysqli_fetch_array($query) ) {
 	<table class="table table-success table-striped-columns">
 	<tr>
 		<th>No.</th>
-		<th>Id</th>
 		<th>Nama Dokumen</th>
 		<th>Tipe Dokumen</th>
+		<th>Aksesibilitas</th>
 		<th>Action</th>
 	</tr>
 <?php $i = 1; ?>
 <?php foreach ($query as $row) : ?>
 <tr>
 	<td><?= $i; ?></td>
-	<td><?= $row["id"]?></td>
-	<td><?= $row["nama_doc"]?></td>
-	<td><?= $row["tipe_doc"]?></td>
+	<td><?= $row["nama"]?></td>
+	<td><?= $row["berkas"]?></td>
+	<td><?= $row["access"] ?></td>
+	<!-- tampilin user yang nambahin docnya -->
+	<!-- <td></td> -->
     <td>
 		<a href="ubah.php?id=<?= $row["id"]?>">Ubah</a> |
-		<a href="hapus.php?id= <?= $row["id"]?>" onclick="return confirm ('yakin?');">Hapus</a>
+		<a href="hapus.php?id= <?= $row["id"]?>" onclick="return confirm ('yakin ingin menghapus data?');">Hapus</a>
 
 </td>
 </tr>
@@ -103,7 +105,7 @@ while ($a= mysqli_fetch_array($query) ) {
 </div>
 
 <div class="d-grid gap-3 d-md-flex justify-content-md-center">
-<a href="logout.php"><buttonTambah type="button" class="btn btn-outline-primary">Logout</button></a>
+<a href="logout.php" onclick="return confirm ('Anda Yakin ingin logout?');"><buttonTambah type="button" class="btn btn-outline-primary">Logout</button></a>
 </div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,32L40,37.3C80,43,160,53,240,58.7C320,64,400,64,480,85.3C560,107,640,149,720,181.3C800,213,880,235,960,250.7C1040,267,1120,277,1200,261.3C1280,245,1360,203,1400,181.3L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

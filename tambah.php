@@ -46,17 +46,24 @@ if (isset($_POST ["submit"]) ) {
     <form action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" required>
     <div class="mb-3">
-                <label for="nama_doc" class="form-label">Nama : </label>
-                <input class="form-control border border-success" type="text" name="nama_doc" id="nama_doc" required>
+                <label for="nama" class="form-label">Nama : </label>
+                <input class="form-control border border-success" type="text" name="nama" id="nama" required>
     </div>
     <div class="mb-3">
-                <label for="tipe_doc" class="form-label">Tipe Dokumen : </label>
-                <input class="form-control form-control-sm" type="file" name="tipe_doc" id="tipe_doc" required>
-                
+                <label for="berkas" class="form-label">Tipe Dokumen : </label>
+                <input class="form-control form-control-sm" type="file" name="berkas" id="berkas" required>
 </div>
+<div class="mb-3">
+					<label for="access">Aksesbilitas:</label>
+					<select name="access" id="access">
+						<option value="Public" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
+						<option value="Private" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
+					</select>
+				</div>
 <div class="d-grid">
-                <button type="submit" name="submit" class="btn btn-success"> Tambah Data!</button>
-</div>
+<button type="submit" name="submit" class="btn btn-success"> Tambah Data!</button>
+</div>          
+
 
 </form>
 </div>
