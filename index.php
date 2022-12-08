@@ -2,17 +2,7 @@
 include 'koneksi.php';
 session_start();
 
-if (isset($_POST["cari"]) ) {
-	$dokumen = cari($_POST["keyword"]);
-}
-
-$query = mysqli_query($koneksi, 'SELECT*FROM dokumen ORDER BY id ASC');
-$no =1;
-if (mysqli_num_rows($query)==0) {
-    echo "<tr><td colspan='6'> Tidak ada data</td></tr>";
-}else {
-}
-while ($a= mysqli_fetch_array($query) ) {
+$dok = query ("SELECT * FROM dokumen");
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +72,7 @@ while ($a= mysqli_fetch_array($query) ) {
 		<th>Action</th>
 	</tr>
 <?php $i = 1; ?>
-<?php foreach ($query as $row) : ?>
+<?php foreach ($dok as $row) : ?>
 <tr>
 	<td><?= $i; ?></td>
 	<td><?= $row["nama"]?></td>
@@ -98,7 +88,7 @@ while ($a= mysqli_fetch_array($query) ) {
 </tr>
 <?php $i++; ?>
 <?php endforeach; ?>
-<?php } ?>
+
 </table>
 </div>
 </div>

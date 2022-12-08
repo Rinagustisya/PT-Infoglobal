@@ -4,12 +4,12 @@ require 'koneksi.php';
 // ambil data di url
 $id = $_GET["id"];
 
-$query = query("SELECT * FROM dokumen WHERE id = $id");
-
+$dok = query("SELECT * FROM dokumen WHERE id = $id")[0];
+var_dump($dok);
 
 if (isset($_POST ["submit"]) ) {
 // CEK APAKAH DATA BERHASIL DI UBAH ATAU TIDAK
-		if (ubah($_POST))  {
+		if (ubah($_POST)>0) {
 			echo "
 			<script>
 			alert('data berhasil diubah!');
@@ -43,16 +43,16 @@ if (isset($_POST ["submit"]) ) {
     <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
 
-    <input type="hidden" name="id" value="<?= $query['id']; ?>">
-    <input type="hidden" name="berkas" value="<?= $query['berkas']; ?>">
+    <input type="hidden" name="id" value="<?= $dok['id']; ?>">
+    <input type="hidden" name="berkas" value="<?= $dok['berkas']; ?>">
     <h3 align="center">Ubah Data</h3>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Dokumen : </label>
-                <input class="form-control border border-primary" type="text" name="nama" id="nama" required value="<?= isset($query['nama']); ?>">
+                <input class="form-control border border-primary" type="text" name="nama" id="nama" required value="<?= $dok['nama']; ?>">
             </div>
             <div class="mb-3">
                 <label for="berkas" class="form-label">Tipe Dokumen : </label>
-                <input class="form-control form-control-sm" type="file" name="berkas" id="berkas" required value="<?= isset($query['berkas']); ?>">
+                <input class="form-control form-control-sm" type="file" name="berkas" id="berkas" required value="<?= $dok['berkas']; ?>">
             </div>
             <div class="mb-3">
 					<label for="access">Aksesbilitas:</label>
